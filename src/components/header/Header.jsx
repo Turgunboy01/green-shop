@@ -13,6 +13,7 @@ import { TiHome } from "react-icons/ti";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import { VscSettings } from "react-icons/vsc";
 import { login, signup } from "../../firebase/Firebase";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -22,6 +23,11 @@ const Header = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const cart = useSelector((state) => state.cart.data);
 
   const handleNavigate = (id) => {
     navigate(`/card/${id}`);
@@ -32,18 +38,53 @@ const Header = () => {
     fill.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const hanleLogin = () => {
+  const handleLogin = () => {
     setModal(true);
+  };
+
+  const validateEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 6;
   };
 
   const user_auth = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (signState) {
-      await login(email, password);
-    } else {
-      await signup(name, email, password);
+    setError("");
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address");
+      setLoading(false);
+      return;
     }
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 6 characters long");
+      setLoading(false);
+      return;
+    }
+
+    if (!signState && password !== confirmPassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      if (signState) {
+        await login(email, password);
+      } else {
+        await signup(name, email, password);
+      }
+      setModal(false);
+    } catch (error) {
+      setError("An error occurred during authentication");
+    }
+
     setLoading(false);
   };
 
@@ -69,7 +110,6 @@ const Header = () => {
             </li>
           </div>
           <div className="flex  items-center gap-2 md:gap-[30px] relative">
-            {/* <exit /> */}
             <div className="group flex items-center gap-1 group-hover:border-[1px] border py-2 px-2 lg:px-4 border-[#000]">
               <input
                 type="text"
@@ -104,15 +144,16 @@ const Header = () => {
               )}
             </div>
 
-            <Link to={"/shop/cart"} className="">
+            <Link to={"/shop/cart"} className="relative">
               <img src={store} alt="" />
+              <span className="absolute -top-1 bg-[#46A358] w-[15px] h-[15px] text-[12px] rounded-full border border-[#fff] flex justify-center items-center -right-2 text-[#fff]">
+                {cart.length > 0 ? cart.length : 0}
+              </span>
             </Link>
-            {/* <Store /> */}
             <button
-              onClick={hanleLogin}
+              onClick={handleLogin}
               className="bg-[#46A358] text-[#fff] flex items-center py-2 px-[12px] md:px-[17px] rounded-[6px] gap-2"
             >
-              {/* <Search /> */}
               <RxExit />
               Login
             </button>
@@ -184,32 +225,33 @@ const Header = () => {
               <button
                 className={` text-[25px] text-[#3D3D3D] ${
                   signState ? "text-[#46A358]" : "text-[#3D3D3D]"
-                } font-medium `}
+                }`}
                 onClick={() => setLogin(true)}
               >
                 Login
               </button>
-              <div className="w-[1px] h-4 bg-[#333]"></div>
+              <h2 className="text-[25px] text-[#3D3D3D]">|</h2>
               <button
                 className={` text-[25px] ${
                   !signState ? "text-[#46A358]" : "text-[#3D3D3D]"
-                }  font-medium `}
+                }`}
                 onClick={() => setLogin(false)}
               >
                 Register
               </button>
             </div>
-            <div className="w-[65%] mt-[1px]">
+
+            <div className="mt-[20px] w-full flex flex-col">
               {signState ? (
                 <div className="flex flex-col gap-[17px] ">
                   <h3 className="text-[13px] ">
-                    Enter your email and password to register.
+                    Enter your email and password to login.
                   </h3>
 
                   <input
                     className="w-full py-3 px-[14px] outline-none border-[#EAEAEA] rounded border "
                     type="text"
-                    placeholder="Enter your email adress"
+                    placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -217,14 +259,15 @@ const Header = () => {
                     className="w-full py-3 px-[14px] outline-none border-[#EAEAEA] rounded border "
                     type="password"
                     placeholder="Password"
-                    value={email}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                  {error && <p className="text-red-500">{error}</p>}
                   <button
                     onClick={user_auth}
                     className="bg-[#46A358] rounded font-bold text-[16px] text-[#fff] w-full mt-5 py-[15px]"
                   >
-                    Login
+                    {loading ? "Logging in..." : "Login"}
                   </button>
                 </div>
               ) : (
@@ -242,7 +285,7 @@ const Header = () => {
                   <input
                     className="w-full py-2 sm:py-3 px-[14px] outline-none border-[#EAEAEA] rounded border "
                     type="text"
-                    placeholder="Enter your email adress"
+                    placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -257,14 +300,15 @@ const Header = () => {
                     className="w-full py-2 sm:py-3 px-[14px] outline-none border-[#EAEAEA] rounded border "
                     type="password"
                     placeholder="Confirm password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
+                  {error && <p className="text-red-500">{error}</p>}
                   <button
                     onClick={user_auth}
                     className="bg-[#46A358] rounded font-bold text-[16px] text-[#fff] w-full  sm:mt-5 py-[5px] sm:py-[15px]"
                   >
-                    Register
+                    {loading ? "Registering..." : "Register"}
                   </button>
                 </div>
               )}

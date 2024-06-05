@@ -1,15 +1,26 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjjMUaVK3NNHOJ4UBQsffX5WSddPR7Hxc",
-  authDomain: "shop-edf30.firebaseapp.com",
-  projectId: "shop-edf30",
-  storageBucket: "shop-edf30.appspot.com",
-  messagingSenderId: "221701776722",
-  appId: "1:221701776722:web:ea07c9dacb2e3f2241468b",
-  measurementId: "G-DXHS89F0RP",
+  apiKey: "AIzaSyBZre9BkpHvyfxKpTHiL2EU1hKPKWK5O4c",
+
+  authDomain: "green-shop-17f48.firebaseapp.com",
+
+  projectId: "green-shop-17f48",
+
+  storageBucket: "green-shop-17f48.appspot.com",
+
+  messagingSenderId: "81418368286",
+
+  appId: "1:81418368286:web:f7b1cfc2f10eab26b8050f",
+
+  measurementId: "G-VX58HSSMF4",
 };
 
 const app = initializeApp(firebaseConfig);
