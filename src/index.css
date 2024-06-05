@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+li {
+  list-style: none;
+}
+
+.homeSlide .slick-dots {
+  bottom: 10px;
+}
+.popular .slick-dots {
+  bottom: -5px !important;
+}
+.slick-dots li button:before {
+  color: #46a3584d !important;
+  opacity: 1 !important;
+}
+li.slick-active button::before {
+  color: #46a358 !important;
+  opacity: 1 !important;
+}
+textarea {
+  resize: none;
+}
