@@ -132,7 +132,7 @@ const HeaderModal = () => {
       toast.success("Signup Successfully");
 
       setLoading(false);
-      // setLogin("login");
+      setLogin("login");
       navigate("/");
     } catch (error) {
       console.log(error);
