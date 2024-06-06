@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/CardSlice";
 import { SlBasket } from "react-icons/sl";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
 const PopularCart = ({ item }) => {
   const dispatch = useDispatch();
+  const [like, setLike] = useState(false);
+
   const handleAddToCart = (product) => {
     let totalPrice = 1 * product.price;
     const tempProduct = {
@@ -33,8 +35,15 @@ const PopularCart = ({ item }) => {
           >
             <SlBasket size={20} />
           </div>
-          <div className="hover:bg-[#fff] w-[100px] h-10 flex justify-center rounded-lg items-center hover:text-[#46A358]">
-            <FaRegHeart size={20} />
+          <div
+            onClick={() => setLike((prev) => !prev)}
+            className="hover:bg-[#fff] w-[100px] h-10 flex justify-center rounded-lg items-center hover:text-[#46A358]"
+          >
+            {!like ? (
+              <FaRegHeart size={20} />
+            ) : (
+              <FaHeart size={20} className="text-[#46A358]" />
+            )}
           </div>
           <Link
             to={`/shop/product/${item.id}`}

@@ -52,10 +52,13 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setSearch("");
     }, 8000);
-  });
+
+    // Cleanup the timeout if the component unmounts or the effect runs again
+    return () => clearTimeout(timer);
+  }, [search]);
 
   return (
     <div className="w-full fixed bg-[#fff] shadow-sm z-[999]">
@@ -190,20 +193,32 @@ const Header = () => {
             <div
               className={`absolute top-[70px] left-0 w-full overflow-y-scroll overflow-hidden h-[300px] border bg-white z-999`}
             >
-              {filtered.map((item) => (
-                <div
-                  className="flex py-2 cursor-pointer"
-                  onClick={() => handleNavigate(item.id)}
-                  key={item.img}
-                >
+              {filtered.length == 0 ? (
+                <div className="w-full h-[200px] flex justify-center items-center">
                   <img
-                    src={item.img}
-                    className="w-[60px] h-[40px] object-contain"
+                    src="https://www.soulpharma.org/images/no-product-found.png"
                     alt=""
+                    className="h-[200px] object-contain"
                   />
-                  <h3>{item.name}</h3>
                 </div>
-              ))}
+              ) : (
+                <>
+                  {filtered.map((item) => (
+                    <div
+                      className="flex py-2 cursor-pointer"
+                      onClick={() => handleNavigate(item.id)}
+                      key={item.id}
+                    >
+                      <img
+                        src={item.img}
+                        className="w-[60px] h-[40px] object-contain"
+                        alt=""
+                      />
+                      <h3>{item.name}</h3>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           )}
         </div>
