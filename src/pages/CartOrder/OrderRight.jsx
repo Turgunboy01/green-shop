@@ -11,8 +11,12 @@ const OrderRight = ({ paymentMethod, handlePaymentMethodChange, subtotal }) => {
   return (
     <>
       <div className="max-w-lg mx-auto p-4">
-        <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
-        <div className="border-b pb-4 mb-4">
+        <h2 className="text-2xl font-bold mb-4">Your Order</h2>
+        <div className="border-b border-b-[#46A35880] flex justify-between items-center py-2">
+          <h2 className="text-[16px] text-[#3d3d3d] font-medium">Products</h2>
+          <h2 className="text-[16px] text-[#3d3d3d] font-medium">Subtotal</h2>
+        </div>
+        <div className="border-b pt-2 pb-4 mb-4">
           {cart.map((item) => (
             <div className="flex items-center gap-[60px] mb-2">
               <div className="flex w-2/3 items-center gap-3">

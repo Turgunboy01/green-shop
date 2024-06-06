@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import { IconButton } from "@mui/material";
 import PopularProducts from "../../components/popularProducts/PopularProducts";
 import { removeItem, updateQuantity } from "../../redux/CardSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Import your actions
 
 const Cart = () => {
@@ -43,6 +43,10 @@ const Cart = () => {
 
   return (
     <div className="lg:container mx-auto px-5 overflow-x-hidden  ">
+      <div className="flex gap-[6px]">
+        <Link to={"/"}>Home</Link>/<Link to={"/shop"}>Shop</Link>/
+        <Link>Shopping Cart</Link>
+      </div>
       <div className="flex flex-col md:flex-row justify-between p-4">
         <div className="w-full md:w-2/3 h-[400px]  overflow-y-scroll">
           {cart.length < 1 ? (
@@ -126,6 +130,9 @@ const Cart = () => {
           )}
         </div>
         <div className="w-full md:w-1/3 mt-4 md:mt-0 md:ml-4">
+          <h2 className="pl-4 text-[18px] font-bold text-[#3D3D3D]">
+            Cart Totals
+          </h2>
           <div className="bg-white p-4  border-gray-200">
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700">

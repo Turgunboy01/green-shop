@@ -8,9 +8,9 @@ import ProductDetails from "./pages/productDetails/ProductDetails";
 import ScrollTop from "./components/scrollToTop/ScrollTop";
 import Cart from "./pages/cart/Cart";
 import CartOrder from "./pages/CartOrder/CartOrder";
-import Modal from "./components/modal/Modal";
 import UserPage from "./pages/userPage/UserPage";
 import Shop from "./pages/shop/Shop";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -30,6 +30,7 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
+        <Toaster />
       </BrowserRouter>
     </div>
   );

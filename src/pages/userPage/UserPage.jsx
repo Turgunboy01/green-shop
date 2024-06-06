@@ -10,8 +10,8 @@ import Account from "../../components/user/Account";
 const UserPage = () => {
   const [menu, setMenu] = useState(1);
   return (
-    <div className="lg:container mx-auto px-5 flex flex-col sm:flex-row gap-10">
-      <div className="w-[30%] flex gap-[20px] py-2 flex-row flex-wrap sm:flex-col">
+    <div className="lg:container mx-auto px-5 flex flex-col sm:flex-row gap-10 mb-[50px]">
+      <div className="w-full sm:w-[30%] flex gap-[20px] py-2   flex-col">
         <UserLeft menu={menu} setMenu={setMenu} />
       </div>
       <div className="w-full sm:w-[70%]">

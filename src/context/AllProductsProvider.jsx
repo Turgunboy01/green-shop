@@ -6,13 +6,22 @@ export const ProductsContext = createContext(null);
 const AllProductsProvider = ({ children }) => {
   const [products, setProducts] = useState(data);
   const [modal, setModal] = useState(false);
+  const [loginmodal, setLoginModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
 
   //   console.log(products);
 
   return (
     <ProductsContext.Provider
-      value={{ products, modal, setModal, orderModal, setOrderModal }}
+      value={{
+        products,
+        modal,
+        setModal,
+        orderModal,
+        setOrderModal,
+        setLoginModal,
+        loginmodal,
+      }}
     >
       {children}
     </ProductsContext.Provider>

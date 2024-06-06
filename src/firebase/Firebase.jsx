@@ -25,35 +25,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
-
-const signup = async (name, email, password) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
-    console.log(user);
-    await addDoc(collection(db, "users"), {
-      uid: user.uid, // user obyektining uid xususiyatiga o'zgartirildi
-      name,
-      authProvider: "local",
-      email,
-    });
-  } catch (error) {
-    console.log(error);
-    toast.error(error.code.split("/")[1].split("-").join(" "));
-  }
-};
-const login = async (email, password) => {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    console.log(error);
-    toast.error(error.code.split("/")[1].split("-").join(" "));
-  }
-};
+// const db = getFirestore(app);
+const fireDB = getFirestore(app);
 
 const lagout = () => {
   signOut(auth);
 };
 
-export { auth, db, login, signup, lagout };
+export { auth, fireDB, lagout };

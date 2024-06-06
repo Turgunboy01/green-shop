@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CiHeart, CiLocationOn, CiUser } from "react-icons/ci";
 import { RxExit } from "react-icons/rx";
 import store from "../../../public/store.png";
@@ -8,12 +8,23 @@ import user from "../../../public/User.svg";
 import report from "../../../public/Activity.png";
 import download from "../../../public/Download.png";
 import danger from "../../../public/Danger.png";
+import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../../context/AllProductsProvider";
 
 const UserLeft = ({ menu, setMenu }) => {
+  const navigate = useNavigate();
+  const { setModal, modal } = useContext(ProductsContext);
+
+  const logout = () => {
+    localStorage.clear("users");
+    // navigate("/login");
+    setModal(true);
+  };
+
   return (
     <>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 1
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02]"
@@ -23,7 +34,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={user} alt="" /> Account details
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 2
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02]"
@@ -33,7 +44,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={location} alt="" /> Adress
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 3
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02] "
@@ -43,7 +54,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={store} className="w-[18px]" alt="" /> Orders
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 4
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02] "
@@ -53,7 +64,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={wishlist} alt="" /> Wishlist
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 5
             ? "font-bold border-l-[5px] text-[#46A358] border-l-[#46A358]"
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02]"
@@ -63,7 +74,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={report} className="w-[18px]" alt="" /> Reports
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer  gap-3 pl-[18px] hover:border-l-[5px] hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 6
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272]  border-l-[5px] border-l-[#ffffff02]"
@@ -73,7 +84,7 @@ const UserLeft = ({ menu, setMenu }) => {
         <img src={download} alt="" /> Downloads
       </li>
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
+        className={`flex items-center cursor-pointer gap-3 pl-[18px] hover:border-l-[5px]  hover:border-l-[#46A358] hover:text-[#46A358] hover:font-bold ${
           menu == 7
             ? "font-bold border-l-[4px] text-[#46A358] border-l-[#46A358] "
             : "text-[#727272] border-l-[5px] border-l-[#ffffff02]"
@@ -84,8 +95,8 @@ const UserLeft = ({ menu, setMenu }) => {
       </li>
       <hr />
       <li
-        className={`flex items-center gap-3 pl-[18px] hover:border-l-[5px] font-bold  text-[#46A358] border-l-[#46A358]    `}
-        onClick={() => setMenu(8)}
+        className={`flex items-center cursor-pointer gap-3 pl-[18px] hover:border-l-[5px] font-bold  text-[#46A358] border-l-[#46A358]    `}
+        onClick={logout}
       >
         <RxExit /> loguot
       </li>

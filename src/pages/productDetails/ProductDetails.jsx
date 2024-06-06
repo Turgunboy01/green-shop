@@ -40,6 +40,9 @@ const ProductDetails = () => {
 
   return (
     <div className="lg:container mx-auto px-5 overflow-x-hidden ">
+      <div className="flex gap-[6px]">
+        <Link to={"/"}>Home</Link>/<Link to={"/shop"}>Shop</Link>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-[40px]">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="hidden sm:flex flex-row-reverse md:flex-col gap-2">
@@ -47,7 +50,7 @@ const ProductDetails = () => {
               <div onClick={() => handleImg(item)}>
                 <img
                   src={item.img}
-                  className="w-[80px] md:w-[100px] h-[80px] md:h-[100px]"
+                  className="w-[80px] cursor-pointer md:w-[100px] h-[80px] md:h-[100px]"
                   alt=""
                 />
               </div>
