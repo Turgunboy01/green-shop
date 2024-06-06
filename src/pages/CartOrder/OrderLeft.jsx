@@ -1,6 +1,12 @@
 import React from "react";
 
-const OrderLeft = ({validateField,handleSubmit,handleChange,formData,errors}) => {
+const OrderLeft = ({
+  validateField,
+  handleSubmit,
+  handleChange,
+  formData,
+  errors,
+}) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="mx-auto p-4">
@@ -55,7 +61,9 @@ const OrderLeft = ({validateField,handleSubmit,handleChange,formData,errors}) =>
                 className="w-full border p-2 rounded outline-none"
                 required
               >
-                <option value="">Select a country / region</option>
+                <option value="1">Select a country / region</option>
+                <option value="2">Select a country / region</option>
+                <option value="3">Select a country / region</option>
                 {/* Add country options here */}
               </select>
               {errors.country && (
@@ -124,7 +132,9 @@ const OrderLeft = ({validateField,handleSubmit,handleChange,formData,errors}) =>
               className="w-full border p-2 rounded outline-none"
               required
             >
-              <option value="">Select a state</option>
+              <option value="1">Select a state</option>
+              <option value="2">Select 1 state</option>
+              <option value="3">Select 2 state</option>
               {/* Add state options here */}
             </select>
             {errors.state && (

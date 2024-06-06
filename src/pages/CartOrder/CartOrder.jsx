@@ -28,6 +28,7 @@ const CartOrder = () => {
   const [errors, setErrors] = useState({});
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
   const { setOrderModal, orderModal } = useContext(ProductsContext);
+  // const { setOrderModal } = useContext(ProductsContext);
 
   // const [login, setLogin] = useState(false);
 
@@ -100,6 +101,7 @@ const CartOrder = () => {
           newErrors[key] = "Invalid phone number.";
         }
       }
+      setOrderModal(true);
     });
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -143,6 +145,7 @@ const CartOrder = () => {
             subtotal={subtotal}
             handlePaymentMethodChange={handlePaymentMethodChange}
             paymentMethod={paymentMethod}
+            handleSubmit={handleSubmit}
           />
           {orderModal && (
             <OrderModal>

@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../../public/logo.png";
 import store from "../../../public/store.png";
 import { IoSearch } from "react-icons/io5";
 import { RxExit } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { data } from "../../data";
 import { ProductsContext } from "../../context/AllProductsProvider";
 import Modal from "../modal/Modal";
 import { FaSearch, FaUser, FaUserCircle } from "react-icons/fa";
-import { TiHome } from "react-icons/ti";
+import { GoHome } from "react-icons/go";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
+import { TbLineScan } from "react-icons/tb";
 import { VscSettings } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import HeaderModal from "./HeaderModal";
@@ -47,8 +48,14 @@ const Header = () => {
   };
   const logout = () => {
     localStorage.clear("users");
-    navigate("/login");
+    navigate("/");
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSearch("");
+    }, 8000);
+  });
 
   return (
     <div className="w-full fixed bg-[#fff] shadow-sm z-[999]">
@@ -58,18 +65,33 @@ const Header = () => {
             <img src={logo} alt="Logo" className="w-[100px] md:w-[150px]" />
           </Link>
           <div className="flex gap-[30px] lg:gap-[50px]">
-            <li className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer">
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer">
+            <NavLink
+              to={"/"}
+              className={
+                "text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer"
+              }
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to={"/shop"}
+              className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer"
+            >
               Shop
-            </li>
-            <li className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer">
-              Plant Care
-            </li>
-            <li className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer">
+            </NavLink>
+            <NavLink
+              to={"/plant"}
+              className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer"
+            >
+              Plant CareNavli
+            </NavLink>
+            <NavLink
+              to={"/blog"}
+              className="text-[#3D3D3D] text-[14px] md:text-[16px] hover:font-bold border-b-[3px] border-[#0000] pb-2 hover:border-[#46A358] cursor-pointer"
+            >
               Blogs
-            </li>
+            </NavLink>
           </div>
           <div className="flex items-center gap-2 md:gap-[30px] relative">
             <div className="group flex items-center gap-1 group-hover:border-[1px] border border-[#eee] py-2 px-2 lg:px-4 border-[#000]">
@@ -186,23 +208,31 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className="sm:hidden flex items-center fixed bottom-0 bg-white z-40 w-full h-[100px]">
+      <div className="sm:hidden flex items-center fixed bottom-0 bg-white z-40 w-full h-[80px]">
         <div className="px-5 w-full flex justify-between items-center">
-          <div className="flex gap-[50px] items-center">
-            <Link to={"/"}>
-              <TiHome size={25} />
-            </Link>
-            <Link to={"/wishlist"}>
+          <div className="flex gap-[40px] items-center">
+            <NavLink to={"/"}>
+              <GoHome size={25} />
+            </NavLink>
+            <NavLink to={"/wishlist"}>
               <CiHeart size={25} />
-            </Link>
+            </NavLink>
           </div>
-          <div className="flex gap-[50px] items-center">
-            <Link to={"/shop/cart"} className="relative">
+          <div className="relative">
+            <div
+              onClick={() => navigate("/scaner")}
+              className="w-[70px] h-[70px] absolute -top-[70px] -left-[30px]   flex items-center justify-center rounded-full bg-[#46A358] border-[10px] border-[#fff] text-white"
+            >
+              <TbLineScan size={25} />
+            </div>
+          </div>
+          <div className="flex gap-[40px] items-center">
+            <NavLink to={"/shop/cart"} className="relative">
               <CiShoppingCart size={25} />
               <span className="absolute -top-1 bg-[#46A358] w-[15px] h-[15px] text-[12px] rounded-full border border-[#fff] flex justify-center items-center -right-2 text-[#fff]">
                 {cart.length > 0 ? cart.length : 0}
               </span>
-            </Link>
+            </NavLink>
             {!user && (
               <button
                 onClick={handleLogin}

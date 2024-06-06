@@ -43,9 +43,9 @@ const Cart = () => {
 
   return (
     <div className="lg:container mx-auto px-5 overflow-x-hidden  ">
-      <div className="flex gap-[6px]">
+      <div className="flex gap-[6px] font-semibold">
         <Link to={"/"}>Home</Link>/<Link to={"/shop"}>Shop</Link>/
-        <Link>Shopping Cart</Link>
+        <Link className="border-b text-[#46A358] border-b-[#46A358]">Shopping Cart</Link>
       </div>
       <div className="flex flex-col md:flex-row justify-between p-4">
         <div className="w-full md:w-2/3 h-[400px]  overflow-y-scroll">
@@ -54,7 +54,7 @@ const Cart = () => {
               <img
                 src="https://www.soulpharma.org/images/no-product-found.png"
                 alt=""
-                className="h-[400px]"
+                className="h-[400px] object-contain"
               />
             </div>
           ) : (
@@ -173,12 +173,20 @@ const Cart = () => {
               <span>${total.toFixed(2)}</span>
             </div>
             <button
-              className="w-full bg-[#46A358] text-white p-2 mt-4 rounded"
+              className={`w-full text-white p-2 mt-4 rounded ${
+                cart.length === 0
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-[#46A358]"
+              }`}
               onClick={() => navigate("/order")}
+              disabled={cart.length === 0}
             >
               Proceed To Checkout
             </button>
-            <button className="w-full  text-[#46A358] p-2 mt-2 rounded">
+            <button
+              onClick={() => navigate("/shop")}
+              className="w-full  text-[#46A358] p-2 mt-2 rounded"
+            >
               Continue Shopping
             </button>
           </div>

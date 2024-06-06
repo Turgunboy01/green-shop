@@ -37,7 +37,7 @@ const PopularCart = ({ item }) => {
             <FaRegHeart size={20} />
           </div>
           <Link
-            to={`/card/${item.id}`}
+            to={`/shop/product/${item.id}`}
             className="hover:bg-[#fff] w-[100px] h-10 flex justify-center rounded-lg items-center hover:text-[#46A358]"
           >
             <IoSearch size={20} />

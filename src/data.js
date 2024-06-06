@@ -43,8 +43,7 @@ export const data = [
   {
     id: 1,
     name: "Barberton Daisy",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "m",
     rating: 3,
     review: 10,
@@ -57,8 +56,7 @@ export const data = [
   {
     id: 2,
     name: "Angel Wing Begonia",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "s",
     rating: 5,
     review: 14,
@@ -240,8 +238,7 @@ export const data = [
   {
     id: 16,
     name: "Barberton Daisy",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "m",
     rating: 3,
     review: 10,
@@ -254,8 +251,7 @@ export const data = [
   {
     id: 17,
     name: "Angel Wing Begonia",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "s",
     rating: 5,
     review: 14,
@@ -437,8 +433,7 @@ export const data = [
   {
     id: 31,
     name: "Barberton Daisy",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "m",
     rating: 3,
     review: 10,
@@ -451,8 +446,7 @@ export const data = [
   {
     id: 32,
     name: "Angel Wing Begonia",
-    desc:
-      "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
+    desc: "The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. ",
     size: "s",
     rating: 5,
     review: 14,
@@ -661,5 +655,128 @@ export const posts = [
     title: "September 15  I Read in 2 minutes",
     desc: "The benefits of houseplants are endless. In addition to..",
     name: "Best Houseplants  Room by Room",
+  },
+];
+
+export const reviewDate = [
+  {
+    name: "user 1",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 2",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 3",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 4",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 5",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 6",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 7",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 8",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 9",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 10",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 11",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 12",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 13",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 14",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 15",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 16",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 17",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 18",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 19",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 20",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 21",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 22",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 23",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 24",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 25",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 26",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 27",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 28",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 29",
+    desc: "The benefits of houseplants are endless. In addition to..",
+  },
+  {
+    name: "user 30",
+    desc: "The benefits of houseplants are endless. In addition to..",
   },
 ];

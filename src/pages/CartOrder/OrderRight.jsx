@@ -2,7 +2,12 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../../context/AllProductsProvider";
 import { useSelector } from "react-redux";
 
-const OrderRight = ({ paymentMethod, handlePaymentMethodChange, subtotal }) => {
+const OrderRight = ({
+  paymentMethod,
+  handlePaymentMethodChange,
+  subtotal,
+  handleSubmit,
+}) => {
   const { setOrderModal } = useContext(ProductsContext);
   const cart = useSelector((state) => state.cart.data);
   const cupon = subtotal * 0.1;
@@ -18,7 +23,7 @@ const OrderRight = ({ paymentMethod, handlePaymentMethodChange, subtotal }) => {
         </div>
         <div className="border-b pt-2 pb-4 mb-4">
           {cart.map((item) => (
-            <div className="flex items-center gap-[60px] mb-2">
+            <div key={item.id} className="flex items-center gap-[60px] mb-2">
               <div className="flex w-2/3 items-center gap-3">
                 <div className="">
                   <img src={item.img} className="w-[70px] h-[70px]" alt="" />
@@ -46,7 +51,7 @@ const OrderRight = ({ paymentMethod, handlePaymentMethodChange, subtotal }) => {
           </div>
           <div className="flex justify-between mb-2">
             <span>Coupon Discount</span>
-            <span className="font-bold">(-) ${cupon}.00</span>
+            <span className="font-bold">(-) $0.00</span>
           </div>
           <div className="flex justify-between mb-2">
             <span>Shipping</span>
@@ -124,7 +129,7 @@ const OrderRight = ({ paymentMethod, handlePaymentMethodChange, subtotal }) => {
         </div>
         <button
           className="w-full bg-green-500 text-white p-2 rounded"
-          onClick={() => setOrderModal(true)}
+          onClick={handleSubmit}
         >
           Place Order
         </button>

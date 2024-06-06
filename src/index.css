@@ -23,3 +23,9 @@ li.slick-active button::before {
 textarea {
   resize: none;
 }
+a.active {
+  border-bottom: 3px solid #46a358;
+  padding-bottom: 8px;
+  font-weight: 600;
+  color: #46a358;
+}
