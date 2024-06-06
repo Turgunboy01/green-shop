@@ -28,7 +28,7 @@ const ShopCard = ({ item }) => {
             src={item.img}
             alt={item.name}
           />
-          <div className=" absolute w-[100px] sm:w-[160px] -bottom-[20px] group-hover:bottom-[40px] transition-all duration-300 left-[30%]   h-[20px] flex gap-[10px]">
+          <div className=" absolute w-[100px] sm:w-[160px] -bottom-[20px] group-hover:bottom-[40px] transition-all duration-300 left-[24%]   h-[20px] flex gap-[10px]">
             <div
               className="hover:bg-[#fff] w-[100px] h-10 flex justify-center rounded-lg items-center hover:text-[#46A358]"
               onClick={() => handleAddToCart(item)}
